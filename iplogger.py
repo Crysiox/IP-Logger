@@ -146,29 +146,7 @@ async def help(ctx):
     )
     await ctx.send(embed=embed)
 
-@bot.command()
-async def grab(ctx, action, arg1=None):
-    if action == 'create':
-        if arg1:
-            target_file_path = "paid/The Murk/TheMurk.py"
-            new_line = f'discordData = ["{arg1}", "lmao"]'
 
-            try:
-                with open(target_file_path, "r", encoding='utf-8') as file:
-                    lines = file.readlines()
-
-                lines[19] = new_line + "\n"
-
-                with open(target_file_path, "w", encoding='utf-8') as file:
-                    file.writelines(lines)
-
-                await ctx.send(f"Successfully changed the line in {target_file_path}")
-            except Exception as e:
-                await ctx.send(f"An error occurred: {str(e)}")
-        else:
-            await ctx.send("Usage: !grab create <value_to_replace>")
-    else:
-        await ctx.send('Unknown action. Available action: create')
 
 # Read the token from token.txt
 with open("token.txt", "r") as token_file:
